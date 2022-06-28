@@ -25,11 +25,11 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Override
     public AdminUser login(String userName, String password) {
         String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
-        return adminUserMapper.login(userName, password);
+        return adminUserMapper.login(userName, passwordMd5);
     }
     public int  register(String userName, String password,String nickname) {
         String passwordMd5 = MD5Util.MD5Encode(password, "UTF-8");
-        int register = adminUserMapper.register(userName, password,nickname);
+        int register = adminUserMapper.register(userName, passwordMd5,nickname);
         return register;
     }
 
