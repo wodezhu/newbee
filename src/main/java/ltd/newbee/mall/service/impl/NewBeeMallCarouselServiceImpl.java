@@ -41,7 +41,9 @@ public class NewBeeMallCarouselServiceImpl implements NewBeeMallCarouselService 
         }
         return ServiceResultEnum.DB_ERROR.getResult();
     }
-
+/**
+ * 更新轮播图信息，返回对应的emum中对应的判断
+ * */
     @Override
     public String updateCarousel(Carousel carousel) {
         Carousel temp = carouselMapper.selectByPrimaryKey(carousel.getCarouselId());

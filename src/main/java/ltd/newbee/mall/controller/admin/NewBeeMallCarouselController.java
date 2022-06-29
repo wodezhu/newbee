@@ -26,10 +26,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link https://github.com/newbee-ltd
+
  */
 @Controller
 @RequestMapping("/admin")
@@ -96,7 +93,7 @@ public class NewBeeMallCarouselController {
     }
 
     /**
-     * 详情
+     * 详情，html未完成
      */
     @GetMapping("/carousels/info/{id}")
     @ResponseBody
@@ -109,7 +106,7 @@ public class NewBeeMallCarouselController {
     }
 
     /**
-     * 删除
+     * 删除，判断选入要删除的数据的条数，条数大于等于一则执行删除操作，将这些数据全部删除
      */
     @RequestMapping(value = "/carousels/delete", method = RequestMethod.POST)
     @ResponseBody

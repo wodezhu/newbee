@@ -77,8 +77,6 @@ public class AdminController {
         if (adminUser != null) {
             session.setAttribute("loginUser", adminUser.getNickName());
             session.setAttribute("loginUserId", adminUser.getAdminUserId());
-            //session过期时间设置为7200秒 即两小时
-            //session.setMaxInactiveInterval(60 * 60 * 2);
             return "redirect:/admin/index";
         } else {
             session.setAttribute("errorMsg", "登陆失败，请联系作者获得测试账号");
@@ -106,6 +104,10 @@ public class AdminController {
         }
     }
 
+    /**
+     *
+     * 修改密码界面，拿到在界面显示的昵称和username
+     */
     @GetMapping("/profile")
     public String profile(HttpServletRequest request) {
         Integer loginUserId = (int) request.getSession().getAttribute("loginUserId");
@@ -118,6 +120,10 @@ public class AdminController {
         request.setAttribute("nickName", adminUser.getNickName());
         return "admin/profile";
     }
+    /**
+     * 管理系统内修改密码
+     *
+     * **/
 
     @PostMapping("/profile/password")
     @ResponseBody
@@ -137,7 +143,10 @@ public class AdminController {
             return "修改失败";
         }
     }
-
+/**
+ * 修改管理员名称及其昵称
+ *
+ */
     @PostMapping("/profile/name")
     @ResponseBody
     public String nameUpdate(HttpServletRequest request, @RequestParam("loginUserName") String loginUserName,
@@ -152,6 +161,9 @@ public class AdminController {
             return "修改失败";
         }
     }
+    /**
+     * 注销
+     * */
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {

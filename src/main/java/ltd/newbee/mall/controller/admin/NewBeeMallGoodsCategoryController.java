@@ -25,10 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link https://github.com/newbee-ltd
+
  */
 @Controller
 @RequestMapping("/admin")
@@ -37,6 +34,9 @@ public class NewBeeMallGoodsCategoryController {
     @Resource
     private NewBeeMallCategoryService newBeeMallCategoryService;
 
+    /**
+     判断目录等级，如果符合要求，将该条目录信息传到request域上，然后用list方法查询具体的数据。点击分类管理后前端默认穿入都为一级索引
+     */
     @GetMapping("/categories")
     public String categoriesPage(HttpServletRequest request, @RequestParam("categoryLevel") Byte categoryLevel, @RequestParam("parentId") Long parentId, @RequestParam("backParentId") Long backParentId) {
         if (categoryLevel == null || categoryLevel < 1 || categoryLevel > 3) {
@@ -63,7 +63,7 @@ public class NewBeeMallGoodsCategoryController {
     }
 
     /**
-     * 列表
+     * 改变目录添加商品列表，使不同商品添加到不同目录
      */
     @RequestMapping(value = "/categories/listForSelect", method = RequestMethod.GET)
     @ResponseBody
