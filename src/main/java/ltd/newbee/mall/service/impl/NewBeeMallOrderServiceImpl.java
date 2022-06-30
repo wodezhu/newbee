@@ -47,10 +47,11 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
     @Transactional
     public String updateOrderInfo(NewBeeMallOrder newBeeMallOrder) {
         NewBeeMallOrder temp = newBeeMallOrderMapper.selectByPrimaryKey(newBeeMallOrder.getOrderId());
-        //不为空且orderStatus>=0且状态为出库之前可以修改部分信息
+        //不为空且orderStatus>=0且状态为出库之前可以修改价格信息
         if (temp != null && temp.getOrderStatus() >= 0 && temp.getOrderStatus() < 3) {
             temp.setTotalPrice(newBeeMallOrder.getTotalPrice());
             temp.setUpdateTime(new Date());
+            //判断是否更新成功
             if (newBeeMallOrderMapper.updateByPrimaryKeySelective(temp) > 0) {
                 return ServiceResultEnum.SUCCESS.getResult();
             }

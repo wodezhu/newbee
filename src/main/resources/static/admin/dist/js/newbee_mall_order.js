@@ -119,7 +119,7 @@ function openOrderItems(orderId) {
                 $('#orderItemModal').modal('show');
                 var itemString = '';
                 for (i = 0; i < result.data.length; i++) {
-                    itemString += result.data[i].goodsName + ' x ' + result.data[i].goodsCount + ' 商品编号 ' + result.data[i].goodsId + ";<br>";
+                    itemString += result.data[i].goodsName + ' xss ' + result.data[i].goodsCount + ' 商品编号123 ' + result.data[i].goodsId +result.data[i].goodsCoverImg+ ";<br>";
                 }
                 $("#orderItemString").html(itemString);
             } else {
