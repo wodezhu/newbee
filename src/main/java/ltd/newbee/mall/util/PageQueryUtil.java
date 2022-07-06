@@ -21,7 +21,7 @@ public class PageQueryUtil extends LinkedHashMap<String, Object> {
         this.putAll(params);
 
         //分页参数
-        this.page = Integer.parseInt(params.get("page").toString());
+        this.page = Integer.parseInt(params.get("page").toString());//拿到的page先转string再转成int
         this.limit = Integer.parseInt(params.get("limit").toString());
         this.put("start", (page - 1) * limit);
         this.put("page", page);

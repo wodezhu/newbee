@@ -21,6 +21,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Objects;
@@ -36,7 +38,10 @@ public class NewBeeMallCarouselController {
     NewBeeMallCarouselService newBeeMallCarouselService;
 
     @GetMapping("/carousels")
-    public String carouselPage(HttpServletRequest request) {
+    public String carouselPage(HttpServletRequest request ) {
+//        ServletContext servletContext = servletConfig.getServletContext();
+//        servletContext.setAttribute("肥猪","123135486");
+
         request.setAttribute("path", "newbee_mall_carousel");
         return "admin/newbee_mall_carousel";
     }

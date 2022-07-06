@@ -12,20 +12,19 @@ import ltd.newbee.mall.common.ServiceResultEnum;
 import ltd.newbee.mall.entity.AdminUser;
 import ltd.newbee.mall.service.AdminUserService;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link https://github.com/newbee-ltd
+
  */
 @Controller
 @RequestMapping("/admin")
@@ -82,6 +81,14 @@ public class AdminController {
             session.setAttribute("errorMsg", "登陆失败，请联系作者获得测试账号");
             return "admin/login";
         }
+    }
+    @GetMapping("/count")
+    @ResponseBody
+    public String count(HttpServletRequest httpRequest){
+        Object obj = httpRequest.getSession().getServletContext().getAttribute("count");
+        int count = (int) obj;
+        return "当前有"+count+"人在线";
+
     }
     @PostMapping(value = "/register")
     public String register(@RequestParam("userName") String userName,
